@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        button {
+            width: 48%;
+            margin: 5px 1%;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Calculater </h2>
+        <form >
+            <div class="form-group">
+                <label for="number1">Number 1:</label>
+                <input type="text" id="number1" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="number2">Number 2:</label>
+                <input type="text" id="number2" class="form-control">
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+
+                        <button type="button" class="btn btn-primary" onclick="calculate('+')">+</button>
+                        <button type="button" class="btn btn-primary" onclick="calculate('-')">-</button>
+                </div>
+                <div class="col-md-6">
+
+                    <button type="button" class="btn btn-primary" onclick="calculate('*')">*</button>
+                    <button type="button" class="btn btn-primary" onclick="calculate('/')">/</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <button type="button" class="btn btn-danger" onclick="clearValues()">Clear</button>
+                </div>
+            </div>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function calculate(operator) {
+            var num1 = parseInt(document.getElementById("number1").value);
+            var num2 = parseInt(document.getElementById("number2").value);
+            var result;
+            switch(operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                   
+                        result = num1 / num2;
+                   
+                    break;
+                default:
+                    result = "Invalid operator";
+            }
+            document.getElementById("result").innerHTML = "<strong>Result: </strong>" + result;
+        }
+
+        function clearValues() {
+            document.getElementById("number1").value = "";
+            document.getElementById("number2").value = "";
+            document.getElementById("result").innerHTML = "";
+        }
+    </script>
+</body>
+</html>
